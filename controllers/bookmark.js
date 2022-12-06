@@ -18,11 +18,12 @@ class Controller {
         defaults: { UserId, MovieId, status: "Unwatched" },
       });
 
-      if (!created) throw { name: "Already in your bookmarks" };
+      if (!created) {
+        throw { name: "Already in your bookmarks" };
+      }
 
-      res.status(201).json({
-        message: `${findMovie.title} successfully added to your bookmarks`,
-      });
+
+      res.status(201).json({ message: `${findMovie.title} successfully added to your bookmarks` });
     } catch (error) {
       next(error);
     }
